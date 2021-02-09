@@ -19,11 +19,13 @@ import { formatSecondsDuration } from "../../dateUtils/dateUtils";
 interface RepositoryTimelineGraphProps {
   timeline: RepositoryTimeline;
   graphWidth?: number;
+  isHideFailed?: boolean;
 }
 
 const RepositoryTimelineGraph = ({
   timeline,
   graphWidth,
+  isHideFailed
 }: RepositoryTimelineGraphProps) => {
   const data = timeline.timelineEntries.map((entry) => ({
     date: moment.utc(entry.createdTimestamp).format("YYYY-MM-DD hh:mm:ss"),
@@ -32,7 +34,8 @@ const RepositoryTimelineGraph = ({
     duration: entry.cumulativeDuration,
     totalTestCount: entry.totalTestCount,
     testAverageDuration: entry.testAverageDuration,
-  }));
+    passed: entry.passed,
+  })).filter((row) => {return isHideFailed ? row.passed : true});
 
   const xAxisTickFormatter = (value) => moment(value).format("MMM Do YYYY");
 

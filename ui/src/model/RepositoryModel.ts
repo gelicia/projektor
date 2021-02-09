@@ -6,6 +6,7 @@ interface RepositoryTimelineEntry {
   cumulativeDuration: number;
   totalTestCount: number;
   testAverageDuration: number;
+  passed: boolean;
 }
 
 interface RepositoryTimeline {

@@ -14,10 +14,10 @@ const useStyles = makeStyles(() => ({
 const RepositoryGraphActiveDot = (props) => {
   const classes = useStyles({});
   const { cy, cx, fill, dataKey, payload } = props;
-  const { publicId } = payload;
+  const { publicId, passed } = payload;
 
   const dotOnClick = () => {
-    navigate(`/tests/${publicId}`);
+    window.open(`/tests/${publicId}`);
   };
   return (
     <Dot
@@ -25,6 +25,7 @@ const RepositoryGraphActiveDot = (props) => {
       cy={cy}
       cx={cx}
       fill={fill}
+      stroke={passed ? 'green' : 'red'}   
       onClick={dotOnClick}
       className={classes.dot}
       role={`active-dot-${dataKey}-${publicId}`}

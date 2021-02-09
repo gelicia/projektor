@@ -3,7 +3,7 @@ import { Dot } from "recharts";
 
 const RepositoryGraphDot = (props) => {
   const { dataKey, payload } = props;
-  const { publicId } = payload;
+  const { publicId, passed } = payload;
   const value = payload[dataKey];
 
   return (
@@ -11,6 +11,7 @@ const RepositoryGraphDot = (props) => {
       {...props}
       role={`dot-${dataKey}-${publicId}`}
       aria-label={`dot-${dataKey}-${value}`}
+      stroke={passed ? 'green' : 'red'}
     />
   );
 };
