@@ -14,7 +14,7 @@ const RepositoryTimelineDetails = ({
   repoName,
   hideIfEmpty,
 }: RepositoryTimelineDetailsProps) => {
-  const [isHideFailed, setIsHideFailed] = React.useState(false)
+  const [isHideFailed, setIsHideFailed] = React.useState(false);
   return (
     <div>
       {timeline ? (
@@ -25,17 +25,22 @@ const RepositoryTimelineDetails = ({
       ) : null}
       {timeline ? (
         <>
-          <RepositoryTimelineGraph timeline={timeline} isHideFailed={isHideFailed} />
-          <FormControlLabel
-        control={
-          <Checkbox
-            checked={isHideFailed}
-            onChange={(e) => {setIsHideFailed(e.target.checked)}}
-            color="primary"
+          <RepositoryTimelineGraph
+            timeline={timeline}
+            isHideFailed={isHideFailed}
           />
-        }
-        label="Hide Failed Tests"
-      />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={isHideFailed}
+                onChange={(e) => {
+                  setIsHideFailed(e.target.checked);
+                }}
+                color="primary"
+              />
+            }
+            label="Hide Failed Tests"
+          />
         </>
       ) : hideIfEmpty ? null : (
         <Typography align="center" data-testid="repo-no-timeline">

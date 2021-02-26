@@ -11,7 +11,7 @@ const RepositoryGraphDot = (props) => {
       {...props}
       role={`dot-${dataKey}-${publicId}`}
       aria-label={`dot-${dataKey}-${value}`}
-      stroke={passed ? 'green' : 'red'}
+      stroke={passed ? "green" : "red"}
     />
   );
 };
